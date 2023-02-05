@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4rwy071376qx"]
+
+[ext_resource type="Texture2D" uid="uid://daxoxg4kdf5rr" path="res://Background/grass.png" id="1_5oyqq"]
+[ext_resource type="Script" path="res://Background/Map.gd" id="3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hrsg"]
+resource_name = "Grass"
+texture = ExtResource("1_5oyqq")
+0:0/0 = 0
+0:0/0/custom_data_0 = 1
+0:0/0/custom_data_1 = 1
+0:0/0/custom_data_2 = 1
+0:0/0/custom_data_3 = 1
+
+[sub_resource type="TileSet" id="TileSet_npb28"]
+custom_data_layer_0/name = "Infantry Movement Data"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "Armored Movement Data"
+custom_data_layer_1/type = 2
+custom_data_layer_2/name = "Cavalry Movement Data"
+custom_data_layer_2/type = 2
+custom_data_layer_3/name = "Flier Movement Data"
+custom_data_layer_3/type = 2
+sources/0 = SubResource("TileSetAtlasSource_8hrsg")
+
+[node name="Map" type="TileMap"]
+tile_set = SubResource("TileSet_npb28")
+format = 2
+script = ExtResource("3")
