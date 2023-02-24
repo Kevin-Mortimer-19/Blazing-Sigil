@@ -9,7 +9,7 @@ var _astar := AStar2D.new()
 
 
 ## Initializes the Astar2D object upon creation.
-func _init(grid: Grid,walkable_cells: Array):
+func _init(grid: Grid, walkable_cells: Array):
 	_grid = grid
 	var cell_mappings := {}
 	for cell in walkable_cells:
@@ -31,7 +31,7 @@ func calculate_point_path(start: Vector2, end: Vector2) -> PackedVector2Array:
 func _add_and_connect_points(cell_mappings: Dictionary) -> void:
 	for point in cell_mappings:
 		_astar.add_point(cell_mappings[point], point)
-
+	
 	for point in cell_mappings:
 		for neighbor_index in _find_neighbor_indices(point, cell_mappings):
 			_astar.connect_points(cell_mappings[point], neighbor_index)

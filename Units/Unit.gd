@@ -21,6 +21,8 @@ enum TYPE_UNIT { INFANTRY, ARMORED, CAVALRY, FLIER }
 ## The unit's move speed when it's moving along a path.
 @export var move_speed := 600.0
 
+@export var unit_type: TYPE_UNIT
+
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO : set = set_cell
 ## Toggles the "selected" animation checked the unit.
@@ -42,7 +44,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_path_follow.progress += move_speed * delta
-
+	
 	if _path_follow.progress >= curve.get_baked_length():
 		self._is_walking = false
 		position = grid.calculate_map_position(cell)
@@ -56,7 +58,7 @@ func _process(delta: float) -> void:
 func walk_along(path: PackedVector2Array) -> void:
 	if path.is_empty():
 		return
-
+	
 	curve.add_point(Vector2.ZERO)
 	for point in path:
 		curve.add_point(grid.calculate_map_position(point) - position)

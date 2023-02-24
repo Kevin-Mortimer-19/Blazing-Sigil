@@ -25,6 +25,7 @@ func _ready() -> void:
 	_movement_costs = _map.get_movement_costs(grid)
 	_reinitialize()
 
+# Cancel selection
 func _unhandled_input(event: InputEvent) -> void:
 	if _active_unit and event.is_action_pressed("ui_cancel"):
 		_deselect_active_unit()
